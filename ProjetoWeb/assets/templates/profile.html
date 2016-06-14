@@ -1,0 +1,33 @@
+<div class="container" ng-controller="profile">
+<div class="row">
+  <div class="col-md-4">
+    <img src="./../images/profile.png" id="profPic" width=240 height=180
+         onmouseleave="unblurPPic()" onmouseover="blurPPic()" onclick="editProfilePic()">
+  </div>
+  <br>
+  <divu class="col-md-5" onmouseover="showEdit()" onmouseleave="unshowEdit()">
+    <uname></uname>
+    <br>
+    <ubirth>Nascimento</ubirth>
+    <br>
+    <ubirth2></ubirth2>
+    <br>
+    <udesc></udesc>
+  </divu>
+</div>
+
+
+
+<br><br>
+
+<div class="row">
+  <uposts class="col-md-10" id="titlepost">Posts</uposts>
+</div>
+<div id="divPosts" class="row">
+  <ul>
+    <li ng-repeat="post in myPosts">{{post.text}}
+    <button class="btn btn-danger" ng-click="deletePost(post.id)">Remover</button>
+    </li>
+  </ul>
+</div>
+</div>

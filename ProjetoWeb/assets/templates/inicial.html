@@ -1,0 +1,92 @@
+
+         <div ng-controller = "btns">
+            <div class= "container" style="background-color: #000080">
+                <div class = "row">
+                    <div class = "col-sm-3">
+                        
+                    </div>
+                     <div class = "col-sm-6">
+                        <img src = "./LOGO.jpg" alt = "Logo" width = 500 height = 369 align="middle">
+                    </div>
+                     <div class = "col-sm-2">
+                        
+                    </div>
+                </div>
+
+            </div>
+            <div class= "container" style="background-color: #ADD8E6">
+               <div class = "row">
+                    <h2 style="color:red" id="error" align="center"></h2> 
+               </div> 
+               <div class = "row">
+                   <div class = "col-sm-5 text-center">
+                       <h1 align="middle">Já possui conta? Entre.</h1>
+                            <form name="loginform">
+                                <div align="left">
+                                    <label for="email1">E-mail:</label>
+                                    <input name = "email1" ng-model="email1" class="form-control" type = "email" id = "email1" required>
+                                    <span style="color:red" ng-show="loginform.email1.$touched && loginform.email1.$invalid">E-mail inválido!</span>
+                                </div>
+                                <div align="left">
+                                    <label for="senha1">Senha:</label>
+                                    <input name = "senha1" ng-model="password1" class="form-control" type = "password" id = "senha1" required>
+                                    <span style="color:red" ng-show="loginform.password1.$touched && loginform.password1.$invalid">Senha inválido!</span>
+                            </div>   
+                            </form> 
+                       <button type="button" class="btn btn-default btn-lg btn-primary" ng-click = "login()">Entrar!</button> 
+                   </div>
+
+                   <div class = "col-sm-1"></div>
+
+                   <div class = "col-sm-5 text-center">
+                       <h1 align="middle" id="change">Não Possui? Cadastre-se.</h1>
+                       <form name="signinform">
+                            <div align="left">
+                                <label for="nome">Nome:</label>
+                                <input name ="firstname" ng-model="firstname" class="form-control" type = "text" id = "nome" required>
+                                <span style="color:red" ng-show="signinform.firstname.$touched && signinform.firstname.$invalid">O nome é obrigatório!</span>
+                            </div>
+                            <div align="left">
+                                <label for="sobrenome">Sobrenome:</label>
+                                <input name = "lastname" ng-model="lastname" class="form-control" type = "text" id = "sobrenome" required>
+                                <span style="color:red" ng-show="signinform.lastname.$touched && signinform.lastname.$invalid">O sobrenome é obrigatório!</span>
+                            </div>
+                            <div align="left">
+                                <label for="apelido">Apelido:</label>
+                                <input name = "nickname" ng-model="nickname" class="form-control" type = "text" id = "apelido" required>
+                                <span style="color:red" ng-show="signinform.nickname.$touched && signinform.nickname.$invalid">O apelido é obrigatório!</span>
+                            </div>
+                            <div align="left">
+                                <label for="email2">E-mail:</label>
+                                <input name = "email2" ng-model="email2" class="form-control" type = "email" id = "email2" required>
+                                <span style="color:red" ng-show="signinform.email2.$touched && signinform.email2.$invalid">E-mail inválido!</span>
+                            </div>
+                             <div align="left">
+                                <label for="senha2">Senha:</label>
+                                <input name = "senha2" ng-model="password2" class="form-control" type = "password" id = "senha2" required>
+                                <span style="color:red" ng-show="signinform.password2.$touched && signinform.password2.$invalid">Senha inválida!</span>
+                            </div>
+                            <div align="left">
+                                <label for="sexo">Sexo:</label>
+                                <input type="radio" value="male" />Masculino
+                                <input type="radio" value="female" />Feminino<br />
+                            </div>
+                             <div align="left">
+                                <label for="nascimento">Data de Nascimento:</label>
+                                <input type="date" placeholder="yyyy-MM-dd" ng-model="date" required id="date"/>
+                                <span style="color:red" ng-show="signinform.date.$touched && signinform.date.$invalid">Data inválida!</span>
+                            </div>
+                        </form>    
+                       <button type="button" class="btn btn-default btn-lg btn-primary" align = "middle" color = "blue" ng-click = "signin()">Cadastrar!</button> 
+                   </div>
+               </div>     
+               
+            </div>
+            <div class = "container" align="middle">
+                <div class="row">
+                     <footer>
+                        <p>This social network was created by Gabriel Dupim Hosino and Lucas P. Nunes Matias</p>
+                    </footer>
+                </div>
+            </div>
+        </div>    

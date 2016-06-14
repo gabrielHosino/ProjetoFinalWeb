@@ -1,0 +1,19 @@
+<div class="container" ng-controller="home">
+  <div>
+    <div class="col-md-2">
+      <div class="row">
+        <img src="./../images/profile.png" alt="photo" width="120" height="90"/>
+        <br>
+        <uname></uname>
+      </div>
+    </div>
+    <div class="row">
+      <input style="width: 35em; height: 5em; border-radius: 8px" type="text" size="50" maxlength="200" name="post"
+             id="posts" placeholder="Diga algo!">
+      <button type="button" class="btn btn-default btn-lg btn-primary" ng-click="myNewPost()">Criar!</button>
+      <br><br><br>
+      <urecposts class="col-md-8">Posts Recentes</urecposts>
+      <br>
+    </div>
+  </div>
+</div>

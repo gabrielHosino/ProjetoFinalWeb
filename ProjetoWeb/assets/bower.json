@@ -1,0 +1,19 @@
+{
+  "name": "ProjetoWeb",
+  "homepage": "https://github.com/gabrielHosino/ProjetoWeb",
+  "authors": [
+    "Gabriel Dupim Hosino <gabriel.dhosino@gmail.com>"
+  ],
+  "description": "A web work",
+  "main": "inicial.js",
+  "keywords": [
+    "web"
+  ],
+  "license": "MIT",
+  "dependencies":{
+    "angular": "*",
+    "angular-route": "*",
+    "bootstrap": "*",
+    "jquery": "*" 
+  }
+}
