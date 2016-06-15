@@ -4,7 +4,7 @@ module.exports = {
 		var Obj = newClient;
 		Clients.create(Obj).exec(function(err,result){
 			if(err){
-				throw err;
+				console.log('Erro ao Cadastrar');
 			}
 			callback(result);
 		});

@@ -12,6 +12,7 @@ myApp.controller('home', ['$scope', 'inicialService', function($scope, inicialSe
 				//success
 				function(response){
 					console.log('Post Criado.');
+					document.getElementById("posts").value = '';
 				},
 				//Error
 				function(response){
