@@ -46,12 +46,6 @@ myApp.controller('groups', ['$scope', 'inicialService', function($scope, inicial
 			console.log('Erro: Problema no acesso ao banco de dados.');
 	});
 
-	Search = function(){
-		var looking = document.getElementById("search").value;
-
-		location.href = "http://localhost:1337/search:id=" + id + ":search=" + looking;
-	};
-
 	addtoBd = function(){
 		var newgroup = document.getElementsByTagName("divng")[0];
 		var namegroup = document.getElementById("groupname")
@@ -59,7 +53,7 @@ myApp.controller('groups', ['$scope', 'inicialService', function($scope, inicial
 
 		if(namegroup.value != ""){
 			console.log(id + " " + namegroup.value);
-			inicialService.createGroup({id: id, nome: namegroup.value});
+			inicialService.createGroup({id: id, name: namegroup.value});
 		}
 
 		newgroup.removeChild(namegroup);
@@ -80,10 +74,4 @@ myApp.controller('groups', ['$scope', 'inicialService', function($scope, inicial
 		newgroup.appendChild(confirm);
 	}
 
-	// document.getElementById("home").href = document.getElementById("home").href + "?id=" + id;
-	// document.getElementById("profile").href = document.getElementById("profile").href + "?id=" + id;
-	// document.getElementById("friends").href = document.getElementById("friends").href + "?id=" + id;
-	// document.getElementById("groups").href = document.getElementById("groups").href + "?id=" + id;
-	// document.getElementById("about").href = document.getElementById("about").href + "?id=" + id;
-	// document.getElementById("contact").href = document.getElementById("contact").href + "?id=" + id;
 }]);

@@ -5,7 +5,7 @@ module.exports = {
 			notNull: true,
 			autoIncrement: false
 		},
-		nome: {
+		name: {
 			type: 'string',
 			notNull: true
 		},

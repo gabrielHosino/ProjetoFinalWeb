@@ -16,6 +16,26 @@
         <usearch class="col-md-8">Search</usearch>
         <br><br>
         <divsearch id="divSearch" class="col-md-10" class="row"></divsearch>
+            <ul>
+                <li ng-repeat="user in perUserName">{{user.firstname}}
+            
+                </li>
+            </ul>
+            <ul>
+                <li ng-repeat="userl in perUserLastName">{{userl.lastname}}
+                
+                </li>
+            </ul>
+            <ul>
+                <li ng-repeat="usern in perUserNick">{{usern.nickname}}
+      
+                </li>
+            </ul>
+            <ul>
+                <li ng-repeat="group in perGroup">{{group.name}}
+                     <button type="button" class="btn btn-default btn-lg btn-primary" ng-click = "clickSearchGroup(group.relativeid)">Entrar!</button> 
+                </li>
+            </ul>
       </div>
     </div>
   </div>

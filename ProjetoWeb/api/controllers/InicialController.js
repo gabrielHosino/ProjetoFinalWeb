@@ -8,9 +8,6 @@
 module.exports = {
 	searchByFN: function(req, res){
 		var search = {search: req.param("search")};
-		console.log("SERVICE");
-		console.log(search);
-
 		loginsigninService.searchByFN(search, function(result){
 			return res.json(result);
 		});
@@ -19,6 +16,13 @@ module.exports = {
 		var search = {search: req.param("search")};
 
 		loginsigninService.searchByLN(search, function(result){
+			return res.json(result);
+		});
+	},
+	searchByGroup: function(req, res){
+		var search = {search: req.param("search")};
+
+		loginsigninService.searchByGroup(search, function(result){
 			return res.json(result);
 		});
 	},
@@ -53,6 +57,12 @@ module.exports = {
 			return res.json(client);
 		});
 	},
+	getGroupSee: function(req,res){
+		var value = req.param('relativeid');
+		loginsigninService.readGroup(value, function(group){
+			return res.json(group);
+		});
+	},
 	updateBio: function(req, res){
 		var value = {id: req.param('id'), newbio: req.param('newbio')};
 		loginsigninService.updateBio(value, function(result){
@@ -85,6 +95,12 @@ module.exports = {
 			return res.json(result);
 		});
 	},
+	addParticipant: function(req, res){
+		var value = req.body;
+		groupsService.addParticipant(value, function(result){
+			return res.json(result);
+		});
+	},
 	getGroup: function(req, res){
 		var value = {id: req.param('id'), nome: req.param('nome')};
 		groupsService.getGroup(value, function(result){
@@ -92,7 +108,7 @@ module.exports = {
 		});
 	},
 	getGroups: function(req, res){
-		var value = {id: req.param('id')};
+		var value = {participants: req.param('participants')};
 		groupsService.getGroups(value, function(result){
 			return res.json(result);
 		});

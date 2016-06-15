@@ -46,7 +46,8 @@ var jsFilesToInject = [
   'js/angular/groups.js',
   'js/angular/home.js',
   'js/angular/profile.js',
-  'js/angular/search.js'
+  'js/angular/search.js',
+  'js/angular/seeg.js'
 
 ];
 

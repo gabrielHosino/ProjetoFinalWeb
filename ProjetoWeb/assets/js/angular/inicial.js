@@ -18,7 +18,7 @@ myApp.config(function ($routeProvider) {
       controller: 'friends'
     }).when('/groups', {
       templateUrl: '/templates/groups.html',
-      controller: 'groups'
+      //controller: 'groups'
     }).when('/about', {
       templateUrl: '/templates/about.html',
       // controller: 'about'
@@ -27,7 +27,9 @@ myApp.config(function ($routeProvider) {
       // controller: 'contact'
     }).when('/search', {
       templateUrl: '/templates/search.html',
-      // controller: 'search'
+      controller: 'search'
+    }).when('/seeg', {
+      templateUrl: '/templates/seeg.html',
     }).otherwise({
       redirectTo: '/'
 
@@ -46,14 +48,20 @@ myApp.factory('inicialService', function ($http) {
     'searchByLN': function (search) {
       return $http.get('/Inicial/searchByLN', { params: { search: search } });
     },
+    'searchByGroup': function (search) {
+      return $http.get('/Inicial/searchByGroup', { params: { search: search } });
+    },
     'searchByNick': function (search) {
       return $http.get('/Inicial/searchByNick', { params: { search: search } });
     },
     'setUser': function (newuser) {
       user = newuser;
     },
-    'getUser': function () {
+    'getUser': function (relativeid) {
       return user;
+    },
+    'getGroupSee': function (id) {
+      return $http.get('/Inicial/getGroupSee', { params: { relativeid: id } });
     },
     'deletePost' : function(id){
         return $http.post('/Inicial/delPost', id);
@@ -88,11 +96,14 @@ myApp.factory('inicialService', function ($http) {
     'createGroup': function (newgroup) {
       return $http.post('Inicial/createGroup', newgroup);
     },
+    'addParticipant': function (add) {
+      return $http.post('Inicial/addParticipant', {id: add.id, relativeid: add.relativeid });
+    },
     'getGroup': function (group) {
-      return $http.get('/Inicial/getGroup', { params: { id: group.id, nome: group.nome } });
+      return $http.get('/Inicial/getGroup', { params: { id: group.id, name: group.nome } });
     },
     'getGroups': function (group) {
-      return $http.get('/Inicial/getGroups', { params: { id: group.id } });
+      return $http.get('/Inicial/getGroups', { params: { participants: group.id } });
     },
     'newPost': function (newPost) {
       return $http.post('/Inicial/newpost', newPost);
