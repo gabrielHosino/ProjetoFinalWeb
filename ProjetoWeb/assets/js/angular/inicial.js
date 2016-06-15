@@ -107,6 +107,13 @@ myApp.controller('app', function ($scope, $location) {
   $scope.isActive = function (viewLocation) {
     return viewLocation === $location.path();
   };
+
+  $scope.search = function(){
+    var looking = document.getElementById("search").value;
+    localStorage.search = looking;
+
+    location.href = 'http://localhost:1337/#/search';
+  };
 });
 
 myApp.controller('btns', ['$scope', 'inicialService', function ($scope, inicialService) {

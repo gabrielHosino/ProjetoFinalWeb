@@ -13,6 +13,10 @@ module.exports = {
 			type: 'integer',
 			primaryKey: true,
 			autoIncrement: true
+		},
+		participants: {
+			collection: 'Clients',
+			via: 'groups'
 		}
 	}
 };

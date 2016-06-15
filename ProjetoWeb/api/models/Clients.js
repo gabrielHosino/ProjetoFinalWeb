@@ -44,6 +44,10 @@ module.exports = {
     twiches: {
         collection: 'twiche',
         via: 'user'
+    },
+    groups: {
+        collection: 'Group',
+        via: 'participants'
     }
 	
   }

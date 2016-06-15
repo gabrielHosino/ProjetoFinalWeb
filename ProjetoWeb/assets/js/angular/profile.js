@@ -6,12 +6,6 @@ myApp.controller('profile', ['$scope', 'inicialService', function($scope, inicia
 	var user;
 	$scope.myPosts = [];
 
-	Search = function(){
-		var looking = document.getElementById("search").value;
-
-		location.href = "http://localhost:1337/search:id=" + id + ":search=" + looking;
-	};
-
 	inicialService.user($scope.id).then(
 		function(response){
 			inicialService.setUser(response.data[0]);
