@@ -108,7 +108,7 @@ module.exports = {
 		});
 	},
 	getGroups: function(req, res){
-		var value = {participants: req.param('participants')};
+		var value;
 		groupsService.getGroups(value, function(result){
 			return res.json(result);
 		});

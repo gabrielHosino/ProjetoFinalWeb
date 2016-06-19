@@ -102,8 +102,8 @@ myApp.factory('inicialService', function ($http) {
     'getGroup': function (group) {
       return $http.get('/Inicial/getGroup', { params: { id: group.id, name: group.nome } });
     },
-    'getGroups': function (group) {
-      return $http.get('/Inicial/getGroups', { params: { participants: group.id } });
+    'getGroups': function () {
+      return $http.get('/Inicial/getGroups');
     },
     'newPost': function (newPost) {
       return $http.post('/Inicial/newpost', newPost);
@@ -152,7 +152,9 @@ myApp.controller('btns', ['$scope', 'inicialService', function ($scope, inicialS
           console.log('ERRO: Email ou senha errados.');
           document.getElementById("senha1").value = '';
           document.getElementById("email1").value = '';
+          document.getElementById("error").className = 'alert alert-danger';
           document.getElementById("error").innerHTML = "E-mail ou senha errados.Tente novamente.";
+          
         }
         else {
           console.log(response.data[0]);
@@ -182,6 +184,7 @@ myApp.controller('btns', ['$scope', 'inicialService', function ($scope, inicialS
     console.log(newClient);
     if ($scope.nome == '' || $scope.sobrenome == '' || $scope.apelido == '' ||
       $scope.email == '' || $scope.senha == '') {
+      document.getElementById("error").className = 'alert alert-danger';
       document.getElementById("error").innerHTML = "Erro ao cadastrar novo cliente. Não deixe nenhum espaço em branco!";
     } else {
       inicialService.save(newClient).then(

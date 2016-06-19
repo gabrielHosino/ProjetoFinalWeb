@@ -21,13 +21,13 @@ module.exports = {
 		Group.find({relativeid: Obj.relativeid}).populate('participants').exec(function(e,r){
 			r[0].participants.add(Obj.id);
 			r[0].save(function(err,res){
+				Group.find({relativeid: Obj.relativeid}).populate('participants').exec(function(err,result){
+					callback(result);
+				});
 			})	
 		});
 
-		Group.find({relativeid: Obj.relativeid}).populate('participants').exec(function(err,r){
 		
-		callback(r);
-		});
 	},
 
 	getGroup: function(value, callback){
@@ -42,9 +42,7 @@ module.exports = {
 	},	
 
 	getGroups: function(value, callback){
-		console.log("DATABASE");
-		console.log(value);
-		Group.find({participants: value.participants}).exec(function(err, groups){
+		Group.find().populate('participants').exec(function(err, groups){
 			if(err){
 				throw err;
 			}

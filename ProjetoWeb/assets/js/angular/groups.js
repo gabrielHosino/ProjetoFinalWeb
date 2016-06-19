@@ -3,7 +3,8 @@ var myApp = angular.module('inicial');
 myApp.controller('groups', ['$scope', 'inicialService', function($scope, inicialService) {
 
 	var id = localStorage.id;
-	var groups;
+	$scope.groups;
+	$scope.print = [];
 	var user;
 	inicialService.user(id).then(
 		function(response){
@@ -16,29 +17,17 @@ myApp.controller('groups', ['$scope', 'inicialService', function($scope, inicial
 			console.log('Erro: Problema no acesso ao banco de dados.');
 	});
 
-	inicialService.getGroups({id: id}).then(
+	inicialService.getGroups().then(
 		function(response){
 			console.log(response.data);
-			groups = response.data;
-			var node;
-			var title = document.getElementsByTagName("ugroups")[0];
-			var groupList = document.getElementById("divGroups");
-			var cName = title.className;
-			for(i = 0; i < groups.length; ++i){
-				if(i % 2 == 0){
-					node = document.createElement("divg");
-				}else{
-					node = document.createElement("divg2");
+			$scope.groups = response.data;
+			for(i = 0; i < $scope.groups.length; i++){
+				for(j = 0; j <$scope.groups[i].participants.length; j++){
+					if($scope.groups[i].participants[j].id == id){
+						$scope.print.push($scope.groups[i]);
+						break;
+					}
 				}
-
-				node.className = cName;
-				var name = document.createElement("h4");
-				var date = groups[i].createdAt.split("T");
-				var textname = document.createTextNode("@" + groups[i].nome + "   " + date[0] + " " + date[1]);
-
-				name.appendChild(textname);
-				node.appendChild(name);
-				groupList.appendChild(node);
 			}
 		},
 		//Error
@@ -58,7 +47,7 @@ myApp.controller('groups', ['$scope', 'inicialService', function($scope, inicial
 
 		newgroup.removeChild(namegroup);
 		newgroup.removeChild(confirm);
-	}
+	};
 
 	createGroup = function(){
 		var newgroup = document.getElementsByTagName("divng")[0];
@@ -72,6 +61,11 @@ myApp.controller('groups', ['$scope', 'inicialService', function($scope, inicial
 
 		newgroup.appendChild(namegroup);
 		newgroup.appendChild(confirm);
-	}
+	};
+
+	$scope.clickGroup = function(gid){
+		localStorage.group = gid;
+		location.href = 'http://localhost:1337/#/seeg';
+	};
 
 }]);
