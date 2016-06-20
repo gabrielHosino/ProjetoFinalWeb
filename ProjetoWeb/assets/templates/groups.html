@@ -9,12 +9,22 @@
       <divng></divng>
     </div>
   </div>
-  <div class="row">
-    <br><br>
-    <div class="col-md-8">
-      <ugroups class="col-md-8">Groups</ugroups>
+
+  <br><br>
+  <div class="container">
+    <div class="col-md-10">
+      <ugroups class="col-md-10">Groups</ugroups>
       <br><br>
       <divgroup id="divGroups" class="col-md-10" class="row"></divgroup>
+       <div class="panel panel-primary" ng-repeat="groups in print">
+        <div class="panel-heading clearfix">
+        <h4 class="pull-left">@{{groups.name}}</h4>
+        <div class="pull-right">
+          <buttonSee class="btn btn-info" ng-click="clickGroup(groups.relativeid)">Ver
+              </buttonSee>       
+        </div>
+      </div>
+    <div class="panel-body">Aqui vai a descrição do grupo.</div>
     </div>
   </div>
 </div>

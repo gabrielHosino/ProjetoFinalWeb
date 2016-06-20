@@ -4,7 +4,7 @@ module.exports = {
 		var Obj = newClient;
 		Clients.create(Obj).exec(function(err,result){
 			if(err){
-				throw err;
+				console.log('Erro ao Cadastrar');
 			}
 			callback(result);
 		});
@@ -20,38 +20,37 @@ module.exports = {
 	},
 
 	searchByFN: function(value, callback){
-		console.log(value.search);
-		Clients.find({firstname: value.search}).exec(function(err, client){
+		Clients.find({firstname: {'contains': value.search}}).exec(function(err, client){
 			if(err){
 				throw err;
 			}
-			console.log("DATABASE");
-			console.log(client);
 			callback(client);
 		});
 	},
 
-	searchByLN: function(value, callback){
-		console.log(value.search);
-		Clients.find({lastname: value.search}).exec(function(err, client){
+	searchByGroup: function(value, callback){
+		Group.find({name: {'contains':value.search}}).exec(function(err, group){
 			if(err){
 				throw err;
 			}
+			callback(group);
+		});
+	},
 
-			console.log("DATABASE");
-			console.log(client);
+	searchByLN: function(value, callback){
+		Clients.find({lastname: {'contains': value.search}}).exec(function(err, client){
+			if(err){
+				throw err;
+			}
 			callback(client);
 		});
 	},
 
 	searchByNick: function(value, callback){
-		console.log(value.search);
-		Clients.find({nickname: value.search}).exec(function(err, client){
+		Clients.find({nickname: {'contains': value.search}}).exec(function(err, client){
 			if(err){
 				throw err;
 			}
-			console.log("DATABASE");
-			console.log(client);
 			callback(client);
 		});
 	},
@@ -84,8 +83,6 @@ module.exports = {
 	},
 
 	updateBirth: function(newbirth, callback){
-		console.log("DATABASE");
-		console.log(newbirth);
 		Clients.update({id: newbirth.id}, {birth: newbirth.newbirth}).exec(function(err, result){
 			if(err){
 				throw err;
@@ -96,6 +93,15 @@ module.exports = {
 
 	readUser: function(value,callback){
 		Clients.find({id: value}).exec(function(err, client){
+			if (err){
+				throw err;
+			}
+			callback(client);
+		});
+	},
+
+	readGroup: function(value,callback){
+		Group.find({relativeid: value}).populate('participants').exec(function(err, client){
 			if (err){
 				throw err;
 			}

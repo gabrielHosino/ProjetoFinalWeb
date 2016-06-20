@@ -18,7 +18,7 @@ myApp.config(function ($routeProvider) {
       controller: 'friends'
     }).when('/groups', {
       templateUrl: '/templates/groups.html',
-      controller: 'groups'
+      //controller: 'groups'
     }).when('/about', {
       templateUrl: '/templates/about.html',
       // controller: 'about'
@@ -27,7 +27,9 @@ myApp.config(function ($routeProvider) {
       // controller: 'contact'
     }).when('/search', {
       templateUrl: '/templates/search.html',
-      // controller: 'search'
+      controller: 'search'
+    }).when('/seeg', {
+      templateUrl: '/templates/seeg.html',
     }).otherwise({
       redirectTo: '/'
 
@@ -46,14 +48,20 @@ myApp.factory('inicialService', function ($http) {
     'searchByLN': function (search) {
       return $http.get('/Inicial/searchByLN', { params: { search: search } });
     },
+    'searchByGroup': function (search) {
+      return $http.get('/Inicial/searchByGroup', { params: { search: search } });
+    },
     'searchByNick': function (search) {
       return $http.get('/Inicial/searchByNick', { params: { search: search } });
     },
     'setUser': function (newuser) {
       user = newuser;
     },
-    'getUser': function () {
+    'getUser': function (relativeid) {
       return user;
+    },
+    'getGroupSee': function (id) {
+      return $http.get('/Inicial/getGroupSee', { params: { relativeid: id } });
     },
     'deletePost' : function(id){
         return $http.post('/Inicial/delPost', id);
@@ -88,11 +96,14 @@ myApp.factory('inicialService', function ($http) {
     'createGroup': function (newgroup) {
       return $http.post('Inicial/createGroup', newgroup);
     },
-    'getGroup': function (group) {
-      return $http.get('/Inicial/getGroup', { params: { id: group.id, nome: group.nome } });
+    'addParticipant': function (add) {
+      return $http.post('Inicial/addParticipant', {id: add.id, relativeid: add.relativeid });
     },
-    'getGroups': function (group) {
-      return $http.get('/Inicial/getGroups', { params: { id: group.id } });
+    'getGroup': function (group) {
+      return $http.get('/Inicial/getGroup', { params: { id: group.id, name: group.nome } });
+    },
+    'getGroups': function () {
+      return $http.get('/Inicial/getGroups');
     },
     'newPost': function (newPost) {
       return $http.post('/Inicial/newpost', newPost);
@@ -141,7 +152,9 @@ myApp.controller('btns', ['$scope', 'inicialService', function ($scope, inicialS
           console.log('ERRO: Email ou senha errados.');
           document.getElementById("senha1").value = '';
           document.getElementById("email1").value = '';
+          document.getElementById("error").className = 'alert alert-danger';
           document.getElementById("error").innerHTML = "E-mail ou senha errados.Tente novamente.";
+          
         }
         else {
           console.log(response.data[0]);
@@ -171,6 +184,7 @@ myApp.controller('btns', ['$scope', 'inicialService', function ($scope, inicialS
     console.log(newClient);
     if ($scope.nome == '' || $scope.sobrenome == '' || $scope.apelido == '' ||
       $scope.email == '' || $scope.senha == '') {
+      document.getElementById("error").className = 'alert alert-danger';
       document.getElementById("error").innerHTML = "Erro ao cadastrar novo cliente. Não deixe nenhum espaço em branco!";
     } else {
       inicialService.save(newClient).then(

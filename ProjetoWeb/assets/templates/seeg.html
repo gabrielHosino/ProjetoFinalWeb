@@ -1,0 +1,23 @@
+<div class="container" ng-controller="seeg">
+<div class="row">
+  <divu class="col-md-10">
+    <uname></uname>
+    <udesc></udesc>
+     <button type="button" class="btn btn-default btn-lg btn-primary" id="btnsee" ng-click = "participate()">Entrar no Grupo!</button> 
+  </divu>
+</div>
+
+
+
+<br><br>
+
+<div class="row">
+  <uposts class="col-md-10" id="titlepost">Participants</uposts>
+</div>
+<div id="divPosts" class="row">
+  <ul>
+    <li ng-repeat="peoples in people">{{peoples.firstname}} {{peoples.lastname}}
+    </li>
+  </ul>
+</div>
+</div>
