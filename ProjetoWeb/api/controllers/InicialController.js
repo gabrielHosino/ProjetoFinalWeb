@@ -147,7 +147,7 @@ module.exports = {
 	},
 	unfollow: function(req,res){
 		var value = req.body;
-		followsService.follow(value, function(follower)	{
+		followsService.unfollow(value, function(follower)	{
 			return res.json(follower);
 		});
 	},

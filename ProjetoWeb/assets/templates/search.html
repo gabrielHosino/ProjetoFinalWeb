@@ -13,24 +13,32 @@
     <div class="row">
       <br><br>
       <div class="col-md-8">
-        <usearch class="col-md-8">Search</usearch>
+        <uposts class="col-md-8">Search</uposts>
         <br><br>
         <divsearch id="divSearch" class="col-md-10" class="row"></divsearch>
+            <uposts class="col-md-8">Por Nome</uposts>
+            <br><br>
             <ul>
                 <li ng-repeat="user in perUserName">{{user.firstname}}
                    <button type="button" class="btn btn-default btn-lg btn-primary" ng-click = "clickSearchUser(user.id)">Ver!</button> 
                 </li>
             </ul>
+            <uposts class="col-md-8">Por Sobrenome</uposts>
+            <br><br>
             <ul>
                 <li ng-repeat="userl in perUserLastName">{{userl.lastname}}
-                
+                     <button type="button" class="btn btn-default btn-lg btn-primary" ng-click = "clickSearchUser(userl.id)">Ver!</button> 
                 </li>
             </ul>
+            <uposts class="col-md-8">Por Nick</uposts>
+            <br><br>
             <ul>
                 <li ng-repeat="usern in perUserNick">{{usern.nickname}}
-      
+                    <button type="button" class="btn btn-default btn-lg btn-primary" ng-click = "clickSearchUser(usern.id)">Ver!</button> 
                 </li>
             </ul>
+            <uposts class="col-md-8">Por Grupos</uposts>
+            <br><br>
             <ul>
                 <li ng-repeat="group in perGroup">{{group.name}}
                      <button type="button" class="btn btn-default btn-lg btn-primary" ng-click = "clickSearchGroup(group.relativeid)">Ver!</button> 

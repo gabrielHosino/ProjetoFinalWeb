@@ -17,10 +17,10 @@
 <div class="row">
   <uposts class="col-md-10" id="titlepost">Participants</uposts>
 </div>
-<div id="divPar" class="row">
-  <ul>
-    <li ng-repeat="peoples in people">{{peoples.firstname}} {{peoples.lastname}}
-    </li>
-  </ul>
+<div id="divPar" class="col-md-10" class="row">
+  <div class="panel panel-primary" ng-repeat="peoples in people">
+        <div class="panel-heading clearfix">
+        <h4 class="pull-left">{{peoples.firstname}}    {{peoples.lastname}} @{{peoples.nickname}}</h4>
+      </div>
 </div>
 </div>

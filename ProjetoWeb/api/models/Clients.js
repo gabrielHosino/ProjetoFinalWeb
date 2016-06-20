@@ -50,7 +50,7 @@ module.exports = {
         via: 'follows'
     },
     groups: {
-        collection: 'Group',
+        collection: 'Groups',
         via: 'participants'
     }
 	

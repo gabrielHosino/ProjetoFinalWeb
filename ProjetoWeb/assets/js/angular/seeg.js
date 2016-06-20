@@ -8,6 +8,11 @@ myApp.controller('seeg', ['$scope', 'inicialService', function($scope, inicialSe
 	var user;
 	$scope.isOnGroup;
 	$scope.myPosts = [];
+
+	$scope.seeProf = function(fol){
+		localStorage.seeProf = fol;
+		location.href = 'http://localhost:1337/#/seeu';
+	},
 	
 	inicialService.getGroupSee($scope.group).then(
 		function(response){

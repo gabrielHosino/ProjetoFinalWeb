@@ -19,6 +19,7 @@ myApp.controller('groups', ['$scope', 'inicialService', function($scope, inicial
 
 	inicialService.getGroups().then(
 		function(response){
+			console.log('GROUPS');
 			console.log(response.data);
 			$scope.groups = response.data;
 			for(i = 0; i < $scope.groups.length; i++){

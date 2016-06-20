@@ -29,7 +29,7 @@ module.exports = {
 	},
 
 	searchByGroup: function(value, callback){
-		Group.find({name: {'contains':value.search}}).exec(function(err, group){
+		Groups.find({name: {'contains':value.search}}).exec(function(err, group){
 			if(err){
 				throw err;
 			}
@@ -101,7 +101,7 @@ module.exports = {
 	},
 
 	readGroup: function(value,callback){
-		Group.find({relativeid: value}).populate('participants').exec(function(err, client){
+		Groups.find({relativeid: value}).populate('participants').exec(function(err, client){
 			if (err){
 				throw err;
 			}

@@ -17,11 +17,14 @@ module.exports = {
 			if(err){
 				throw err;
 			}
-			result[0].remove(result[0].id);
-			result[0].save();
-
-			callback(result);
-		});
+			console.log(result);
+			Follow.destroy({id : result[0].id}).exec(function(err, result){
+				if(err){
+					throw err;
+				}
+				callback(result);
+			});
+		});		
 
 	},
 
@@ -37,10 +40,10 @@ module.exports = {
 	addParticipant: function(newgroup, callback){
 		var Obj = newgroup;
 		console.log(Obj);
-		Group.find({relativeid: Obj.relativeid}).populate('participants').exec(function(e,r){
+		Groups.find({relativeid: Obj.relativeid}).populate('participants').exec(function(e,r){
 			r[0].participants.add(Obj.id);
 			r[0].save(function(err,res){
-				Group.find({relativeid: Obj.relativeid}).populate('participants').exec(function(err,result){
+				Groups.find({relativeid: Obj.relativeid}).populate('participants').exec(function(err,result){
 					callback(result);
 				});
 			})	
@@ -52,7 +55,7 @@ module.exports = {
 	getGroup: function(value, callback){
 		console.log("DATABASE");
 		console.log(value);
-		Group.find({id: value.id, nome: value.nome}).exec(function(err, groups){
+		Groups.find({id: value.id, nome: value.nome}).exec(function(err, groups){
 			if(err){
 				throw err;
 			}
@@ -61,7 +64,7 @@ module.exports = {
 	},	
 
 	getGroups: function(value, callback){
-		Group.find().populate('participants').exec(function(err, groups){
+		Groups.find().populate('participants').exec(function(err, groups){
 			if(err){
 				throw err;
 			}
