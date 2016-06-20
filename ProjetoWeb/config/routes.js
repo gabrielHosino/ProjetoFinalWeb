@@ -38,12 +38,6 @@ module.exports.routes = {
   '/login': {
     view: 'login'
   },
-  '/profile': {
-    view: 'profile'
-  },
-  '/home': {
-    
-  }
   '/logout': {
     view: 'logout'
   }
