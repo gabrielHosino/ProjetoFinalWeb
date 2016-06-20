@@ -144,5 +144,11 @@ module.exports = {
 		followsService.getFollows(value, function(followers){
 			return res.json(followers);
 		});
+	},
+	getAllPosts: function(req, res){
+		var value = req.param('id');
+		postsService.getAllPosts(value, function(followers){
+			return res.json(followers);
+		});
 	}
 };

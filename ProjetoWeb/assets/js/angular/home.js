@@ -2,6 +2,7 @@ var myApp = angular.module('inicial');
 
 myApp.controller('home', ['$scope', 'inicialService', function($scope, inicialService) {
 	var id = localStorage.id;
+	$scope.allposts;
 	var user;  
 
 	$scope.myNewPost = function(){
@@ -21,12 +22,22 @@ myApp.controller('home', ['$scope', 'inicialService', function($scope, inicialSe
 	};
 
 
+
 	inicialService.user(id).then(
 		function(response){
 			inicialService.setUser(response.data[0]);
 			user = inicialService.getUser();
 			document.getElementsByTagName("uname")[0].innerHTML = user.firstname + " " + user.lastname;
 			$scope.myPosts = inicialService.readMyPost();
+		},
+		//Error
+		function(response){
+			console.log('Erro: Problema no acesso ao banco de dados.');
+	});
+
+	inicialService.getAllPosts(id).then(
+		function(response){
+			$scope.allposts = response.data;
 		},
 		//Error
 		function(response){

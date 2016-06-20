@@ -118,6 +118,9 @@ myApp.factory('inicialService', function ($http) {
     },
     'getFollows': function(userid) {
       return $http.get('/Inicial/getFollows', { params: { id: userid } });
+    },
+    'getAllPosts': function(id){
+      return $http.get('/Inicial/getAllPosts', { params: { id: id } });
     }
   }
 });
