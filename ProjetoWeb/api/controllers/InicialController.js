@@ -101,6 +101,12 @@ module.exports = {
 			return res.json(result);
 		});
 	},
+	quitGroup: function(req, res){
+		var value = req.body;
+		groupsService.quitGroup(value, function(result){
+			return res.json(result);
+		});
+	},
 	getGroup: function(req, res){
 		var value = {id: req.param('id'), nome: req.param('nome')};
 		groupsService.getGroup(value, function(result){
@@ -134,6 +140,12 @@ module.exports = {
 		});
 	},
 	follow: function(req,res){
+		var value = req.body;
+		followsService.follow(value, function(follower)	{
+			return res.json(follower);
+		});
+	},
+	unfollow: function(req,res){
 		var value = req.body;
 		followsService.follow(value, function(follower)	{
 			return res.json(follower);

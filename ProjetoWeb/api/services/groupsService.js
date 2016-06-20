@@ -30,6 +30,20 @@ module.exports = {
 		
 	},
 
+	quitGroup: function(drop, callback){
+		var Obj = drop;
+		Group.find({relativeid: Obj.relativeid}).populate('participants').exec(function(e,r){
+			r[0].participants.remove(Obj.id);
+			r[0].save(function(err,res){
+				Group.find({relativeid: Obj.relativeid}).populate('participants').exec(function(err,result){
+					callback(result);
+				});
+			})	
+		});
+
+		
+	},
+
 	getGroup: function(value, callback){
 		console.log("DATABASE");
 		console.log(value);

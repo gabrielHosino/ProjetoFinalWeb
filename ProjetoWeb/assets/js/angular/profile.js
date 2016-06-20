@@ -63,13 +63,6 @@ myApp.controller('profile', ['$scope', 'inicialService', function($scope, inicia
 		
   	}
 
-	// document.getElementById("home").href = document.getElementById("home").href + "?id=" + id;
-	// document.getElementById("profile").href = document.getElementById("profile").href + "?id=" + id;
-	// document.getElementById("friends").href = document.getElementById("friends").href + "?id=" + id;
-	// document.getElementById("groups").href = document.getElementById("groups").href + "?id=" + id;
-	// document.getElementById("about").href = document.getElementById("about").href + "?id=" + id;
-	// document.getElementById("contact").href = document.getElementById("contact").href + "?id=" + id;
-
 	editProfilePic = function(){
 		console.log("Editado");
 	};
@@ -91,7 +84,7 @@ myApp.controller('profile', ['$scope', 'inicialService', function($scope, inicia
 		if(newdate != ""){
 			var dates = newdate.split("T");
 			date.innerHTML = dates[0];
-			inicialService.updateBirth({id: id, newbirth: dates[0]});
+			inicialService.updateBirth({id: $scope.id, newbirth: newdate});
 		}else{
 			console.log("NULLDATE");
 			date.removeChild(newdt);
@@ -99,7 +92,7 @@ myApp.controller('profile', ['$scope', 'inicialService', function($scope, inicia
 
 		if(newdesc != ""){
 			bio.innerHTML = newdesc;
-			inicialService.updateBio({id: id, newbio: newdesc});
+			inicialService.updateBio({id: $scope.id, newbio: newdesc});
 		}
 		else{
 			console.log("NULLDESC");
@@ -109,8 +102,8 @@ myApp.controller('profile', ['$scope', 'inicialService', function($scope, inicia
 
 		if(newfirstname != ""){
 			name.innerHTML = newfirstname + " " + newlastname;
-			inicialService.updateFirstname({id: id, newfn: newfirstname});
-			inicialService.updateLastname({id: id, newln: newlastname});
+			inicialService.updateFirstname({id: $scope.id, newfn: newfirstname});
+			inicialService.updateLastname({id: $scope.id, newln: newlastname});
 		}
 		else{
 			console.log("NULLNOME");
@@ -134,7 +127,12 @@ myApp.controller('profile', ['$scope', 'inicialService', function($scope, inicia
 		var newlastname = document.createElement("INPUT");
 		var newdate = document.createElement("INPUT");
 		newdate.setAttribute("type", "date");
+		newdate.placeholder = "yyyy-MM-dd";
 		var confirm = document.createElement("BUTTON");
+
+		newbio.placeholder = "New description";
+		newfirstname.placeholder = "New name";
+		newlastname.placeholder = "New lastname";
 
 		confirm.id = "confirmEdit";
 		confirm.style.float = "right";

@@ -14,7 +14,7 @@ module.exports = {
     	type: 'timestamp',
     	notNull: true
     },
-    user: {
+    client: {
         model: 'Clients',
         notNull: true
     }	

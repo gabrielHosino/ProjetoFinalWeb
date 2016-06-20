@@ -20,7 +20,7 @@ module.exports = {
 	},
 
 	getyourposts: function(value,callback){
-		twiche.find({user: value}).populate('user').exec(function(err, posts){
+		twiche.find({client: value}).populate('client').exec(function(err, posts){
 			if (err){
 				throw err;
 			}
@@ -39,7 +39,7 @@ module.exports = {
 				users.push(people[i].follows.id);
 			}
 			console.log(users);
-			twiche.find({user: users}).populate('user').sort('createdAt DESC').exec(function(err, msg){
+			twiche.find({client: users}).populate('client').sort('createdAt DESC').exec(function(err, msg){
 				if (err){
 					throw err;
 				}

@@ -3,7 +3,10 @@
   <divu class="col-md-10">
     <uname></uname>
     <udesc></udesc>
-     <button type="button" class="btn btn-default btn-lg btn-primary" id="btnsee" ng-click = "participate()">Entrar no Grupo!</button> 
+     <div class="pull-right">
+      <button type="button" class="btn btn-default btn-lg btn-primary" ng-show="!isOnGroup" id="btnsee" ng-click = "participate()">Entrar no Grupo!</button>
+      <button type="button" class="btn btn-default btn-lg btn-danger" ng-show="isOnGroup" id="btnsee2" ng-click = "quitGroup()">Sair do Grupo :(</button> 
+     </div> 
   </divu>
 </div>
 
@@ -14,7 +17,7 @@
 <div class="row">
   <uposts class="col-md-10" id="titlepost">Participants</uposts>
 </div>
-<div id="divPosts" class="row">
+<div id="divPar" class="row">
   <ul>
     <li ng-repeat="peoples in people">{{peoples.firstname}} {{peoples.lastname}}
     </li>

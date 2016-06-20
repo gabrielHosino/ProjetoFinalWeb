@@ -92,6 +92,9 @@ myApp.factory('inicialService', function ($http) {
     'follow': function (foll) {
       return $http.post('/Inicial/follow', { person: foll.person, follows: foll.follows});
     },
+    'unfollow': function (foll) {
+      return $http.post('/Inicial/unfollow', { person: foll.person, follows: foll.follows});
+    },
     'updateLastname': function (userln) {
       return $http.post('/Inicial/updateLastname', { id: userln.id, newln: userln.newln });
     },
@@ -103,6 +106,9 @@ myApp.factory('inicialService', function ($http) {
     },
     'addParticipant': function (add) {
       return $http.post('Inicial/addParticipant', {id: add.id, relativeid: add.relativeid });
+    },
+    'quitGroup': function (add) {
+      return $http.post('Inicial/quitGroup', {id: add.id, relativeid: add.relativeid });
     },
     'getGroup': function (group) {
       return $http.get('/Inicial/getGroup', { params: { id: group.id, name: group.nome } });

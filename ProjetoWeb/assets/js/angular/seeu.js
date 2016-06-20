@@ -5,6 +5,7 @@ myApp.controller('seeu', ['$scope', 'inicialService', function($scope, inicialSe
 	$scope.id = localStorage.id;
 	$scope.seeu = localStorage.seeProf;
 	var user;
+	$scope.isFollowing;
 	$scope.myPosts = [];
 
 	inicialService.user($scope.seeu).then(
@@ -39,16 +40,45 @@ myApp.controller('seeu', ['$scope', 'inicialService', function($scope, inicialSe
 			console.log('Erro: Problema no acesso ao banco de dados.');
 	});
 
-	$scope.follow = function(){
-		var foll = {follows: $scope.seeu, person: $scope.id};
-		inicialService.follow(foll).then(
+	inicialService.getFollows($scope.id).then(
 		function(response){
-			console.log('Vou seguir');
+			for(i =0; i < response.data.length; i++){
+				if(response.data[i].follows.id == $scope.seeu){
+					$scope.isFollowing = true;
+					break;
+				}else{
+					$scope.isFollowing = false;
+				}
+			}
+			
 		},
 		//Error
 		function(response){
 			console.log('Erro: Problema no acesso ao banco de dados.');
 	});
+
+	$scope.follow = function(){
+		var foll = {follows: $scope.seeu, person: $scope.id};
+		inicialService.follow(foll).then(
+		function(response){
+			$scope.isFollowing = true;
+		},
+		//Error
+		function(response){
+			console.log('Erro: Problema no acesso ao banco de dados.');
+		});
+	},
+
+	$scope.unfollow = function(){
+		var foll = {follows: $scope.seeu, person: $scope.id};
+		inicialService.unfollow(foll).then(
+		function(response){
+			$scope.isFollowing = false;
+		},
+		//Error
+		function(response){
+			console.log('Erro: Problema no acesso ao banco de dados.');
+		});
 	}
 	
 }]);

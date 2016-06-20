@@ -11,6 +11,20 @@ module.exports = {
 
 	},
 
+	unfollow: function(follower, callback){
+		var Obj = follower;
+		Follow.find({person: Obj.person , follows: Obj.follows}).exec(function(err, result){
+			if(err){
+				throw err;
+			}
+			result[0].remove(result[0].id);
+			result[0].save();
+
+			callback(result);
+		});
+
+	},
+
 	getFollows: function(value, callback){
 		Follow.find({person: value}).populate('follows').exec(function(err, f){
 			if(err){

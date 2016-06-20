@@ -8,7 +8,7 @@ myApp.controller('home', ['$scope', 'inicialService', function($scope, inicialSe
 	$scope.myNewPost = function(){
 		var text = document.getElementById("posts").value;
 		console.log(text);
-		var myPost = {text : text, user : id};
+		var myPost = {text : text, client : id};
 		inicialService.newPost(myPost).then(
 				//success
 				function(response){

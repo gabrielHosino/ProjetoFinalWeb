@@ -43,7 +43,7 @@ module.exports = {
     },
     twiches: {
         collection: 'twiche',
-        via: 'user'
+        via: 'client'
     },
     followers: {
         collection: 'Follow',
