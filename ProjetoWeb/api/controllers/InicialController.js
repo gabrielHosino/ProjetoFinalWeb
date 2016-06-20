@@ -116,7 +116,6 @@ module.exports = {
 	newpost: function(req,res){
 		//var value = req.param('Teste');
 		var value = req.body;
-		console.log(value);
 		postsService.save(value, function(result){
 			return res.json(result);
 		});
@@ -132,6 +131,18 @@ module.exports = {
 		var value = req.param('id');
 		postsService.getyourposts(value, function(posts){
 			return res.json(posts);
+		});
+	},
+	follow: function(req,res){
+		var value = req.body;
+		followsService.follow(value, function(follower)	{
+			return res.json(follower);
+		});
+	},
+	getFollows: function(req,res){
+		var value = req.param('id');
+		followsService.getFollows(value, function(followers){
+			return res.json(followers);
 		});
 	}
 };

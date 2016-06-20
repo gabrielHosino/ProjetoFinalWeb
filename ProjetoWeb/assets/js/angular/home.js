@@ -32,13 +32,4 @@ myApp.controller('home', ['$scope', 'inicialService', function($scope, inicialSe
 		function(response){
 			console.log('Erro: Problema no acesso ao banco de dados.');
 	});
-
-	
-
-	// document.getElementById("home").href = document.getElementById("home").href + "?id=" + id;
-	// document.getElementById("profile").href = document.getElementById("profile").href + "?id=" + id;
-	// document.getElementById("friends").href = document.getElementById("friends").href + "?id=" + id;
-	// document.getElementById("groups").href = document.getElementById("groups").href + "?id=" + id;
-	// document.getElementById("about").href = document.getElementById("about").href + "?id=" + id;
-	// document.getElementById("contact").href = document.getElementById("contact").href + "?id=" + id;
 }]);

@@ -1,15 +1,30 @@
 <div class="container" ng-controller="friends">
-  <div class="col-md-2">
+  <div id="prof" class="col-md-2">
     <div class="row">
       <img src="./../images/profile.png" alt="photo" width=120 height=90>
       <br>
       <uname></uname>
+      <br><br>
+      <divng></divng>
     </div>
   </div>
-  <div class="row">
-    <ufriends class="col-md-8">Friends</ufriends>
-    <br>
-    <div id="divfriends" onload="loadFriends()">
+
+  <br><br>
+  <div class="container">
+    <div class="col-md-10">
+      <ugroups class="col-md-12">Groups</ugroups>
+      <br><br>
+      <divgroup id="divFriends" class="col-md-10" class="row"></divgroup>
+       <div class="panel panel-primary" ng-repeat="follow in follows">
+        <div class="panel-heading clearfix">
+        <h4 class="pull-left">{{follow.follows.firstname}}    {{follow.follows.lastname}} @{{follow.follows.nickname}}</h4>
+        <div class="pull-right">
+          <buttonSee class="btn btn-info" ng-click="seeProf(follow.follows.id)">Ver
+              </buttonSee>       
+        </div>
+      </div>
     </div>
   </div>
 </div>
+
+

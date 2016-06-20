@@ -47,7 +47,8 @@ var jsFilesToInject = [
   'js/angular/home.js',
   'js/angular/profile.js',
   'js/angular/search.js',
-  'js/angular/seeg.js'
+  'js/angular/seeg.js',
+  'js/angular/seeu.js'
 
 ];
 

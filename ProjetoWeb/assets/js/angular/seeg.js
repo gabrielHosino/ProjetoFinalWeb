@@ -7,8 +7,7 @@ myApp.controller('seeg', ['$scope', 'inicialService', function($scope, inicialSe
 	$scope.people;
 	var user;
 	$scope.myPosts = [];
-	console.log('LOCAL:');
-	console.log($scope.group);
+	
 	inicialService.getGroupSee($scope.group).then(
 		function(response){
 			document.getElementsByTagName("uname")[0].innerHTML = response.data[0].name;

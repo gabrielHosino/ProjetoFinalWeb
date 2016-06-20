@@ -15,7 +15,7 @@ myApp.config(function ($routeProvider) {
       controller: 'profile'
     }).when('/friends', {
       templateUrl: '/templates/friends.html',
-      controller: 'friends'
+      //controller: 'friends'
     }).when('/groups', {
       templateUrl: '/templates/groups.html',
       //controller: 'groups'
@@ -27,9 +27,11 @@ myApp.config(function ($routeProvider) {
       // controller: 'contact'
     }).when('/search', {
       templateUrl: '/templates/search.html',
-      controller: 'search'
+      //controller: 'search'
     }).when('/seeg', {
       templateUrl: '/templates/seeg.html',
+    }).when('/seeu', {
+      templateUrl: '/templates/seeu.html',
     }).otherwise({
       redirectTo: '/'
 
@@ -87,6 +89,9 @@ myApp.factory('inicialService', function ($http) {
     'updateFirstname': function (userfn) {
       return $http.post('/Inicial/updateFirstname', { id: userfn.id, newfn: userfn.newfn });
     },
+    'follow': function (foll) {
+      return $http.post('/Inicial/follow', { person: foll.person, follows: foll.follows});
+    },
     'updateLastname': function (userln) {
       return $http.post('/Inicial/updateLastname', { id: userln.id, newln: userln.newln });
     },
@@ -110,6 +115,9 @@ myApp.factory('inicialService', function ($http) {
     },
     'getYourPosts': function (userid) {
       return $http.get('/Inicial/yourposts', { params: { id: userid } });
+    },
+    'getFollows': function(userid) {
+      return $http.get('/Inicial/getFollows', { params: { id: userid } });
     }
   }
 });
@@ -176,10 +184,12 @@ myApp.controller('btns', ['$scope', 'inicialService', function ($scope, inicialS
     $scope.apelido = document.getElementById("apelido").value;
     $scope.email = document.getElementById("email2").value;
     $scope.senha = document.getElementById("senha2").value;
+    $scope.bio = document.getElementById("bio").value;
     $scope.born = document.getElementById("date").value;
     newClient = {
       firstname: $scope.nome, lastname: $scope.sobrenome,
-      nickname: $scope.apelido, email: $scope.email, password: $scope.senha, birth: $scope.born
+      nickname: $scope.apelido, email: $scope.email, password: $scope.senha,
+      birth: $scope.born, bio: $scope.bio
     };
     console.log(newClient);
     if ($scope.nome == '' || $scope.sobrenome == '' || $scope.apelido == '' ||
@@ -206,6 +216,7 @@ myApp.controller('btns', ['$scope', 'inicialService', function ($scope, inicialS
     document.getElementById("email2").value = '';
     document.getElementById("senha2").value = '';
     document.getElementById("date").value = '';
+    document.getElementById("bio").value = '';
   };
 
 }]);

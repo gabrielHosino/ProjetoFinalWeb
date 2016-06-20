@@ -16,6 +16,11 @@ myApp.controller('search', ['$scope', 'inicialService', function($scope, inicial
 		location.href = 'http://localhost:1337/#/seeg';
 	};
 
+	$scope.clickSearchUser = function(id){
+		localStorage.seeProf = id;
+		location.href = 'http://localhost:1337/#/seeu';
+	}
+
 
 	inicialService.user(id).then(
 		function(response){

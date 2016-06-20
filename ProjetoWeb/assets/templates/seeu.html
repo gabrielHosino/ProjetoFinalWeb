@@ -1,0 +1,37 @@
+<div class="container" ng-controller="seeu">
+<div class="row">
+  <div class="col-md-4">
+    <img src="./../images/profile.png" class="img-cicle" id="profPic" width=240 height=180>
+  </div>
+  <br>
+  <divu class="col-md-5">
+    <uname></uname>
+    <br>
+    <ubirth>Nascimento</ubirth>
+    <br>
+    <ubirth2></ubirth2>
+    <br>
+    <udesc></udesc>
+    <br>
+    <button type="button" class="btn btn-default btn-lg btn-primary" id="btnsee" ng-click = "follow()">Seguir!</button> 
+  </divu>
+</div>
+
+
+
+<br><br>
+
+<div class="row">
+  <uposts class="col-md-12" id="titlepost">Posts</uposts>
+</div>
+<div id="divPosts" class="row">
+  <div class="panel panel-primary" ng-repeat="post in myPosts">
+    <div class="panel-heading clearfix">
+        <h4 class="pull-left">@{{post.user.nickname}}    {{post.createdAt}}</h4>
+        <div class="pull-right">
+        </div>
+    </div>
+    <div class="panel-body">{{post.text}}</div>
+  </div>  
+</div>
+</div>

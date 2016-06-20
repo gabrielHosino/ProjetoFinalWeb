@@ -61,15 +61,15 @@
                                 <input name = "email2" ng-model="email2" class="form-control" type = "email" id = "email2" required>
                                 <span style="color:red" ng-show="signinform.email2.$touched && signinform.email2.$invalid">E-mail inválido!</span>
                             </div>
-                             <div align="left">
+                            <div align="left">
                                 <label for="senha2">Senha:</label>
                                 <input name = "senha2" ng-model="password2" class="form-control" type = "password" id = "senha2" required>
                                 <span style="color:red" ng-show="signinform.password2.$touched && signinform.password2.$invalid">Senha inválida!</span>
                             </div>
                             <div align="left">
-                                <label for="sexo">Sexo:</label>
-                                <input type="radio" value="male" />Masculino
-                                <input type="radio" value="female" />Feminino<br />
+                                <label for="bio">Decrição:</label>
+                                <input name = "bio" ng-model="bio" class="form-control" type = "text" id = "bio" required>
+                                <span style="color:red" ng-show="signinform.nickname.$touched && signinform.nickname.$invalid">Ter uma descrição é legal!Fale sobre você!</span>
                             </div>
                              <div align="left">
                                 <label for="nascimento">Data de Nascimento:</label>

@@ -18,7 +18,7 @@
         <divsearch id="divSearch" class="col-md-10" class="row"></divsearch>
             <ul>
                 <li ng-repeat="user in perUserName">{{user.firstname}}
-            
+                   <button type="button" class="btn btn-default btn-lg btn-primary" ng-click = "clickSearchUser(user.id)">Ver!</button> 
                 </li>
             </ul>
             <ul>
@@ -33,7 +33,7 @@
             </ul>
             <ul>
                 <li ng-repeat="group in perGroup">{{group.name}}
-                     <button type="button" class="btn btn-default btn-lg btn-primary" ng-click = "clickSearchGroup(group.relativeid)">Entrar!</button> 
+                     <button type="button" class="btn btn-default btn-lg btn-primary" ng-click = "clickSearchGroup(group.relativeid)">Ver!</button> 
                 </li>
             </ul>
       </div>
